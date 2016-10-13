@@ -13,7 +13,7 @@ Prerequisites:
 
 Eclipse:
 - Import project as eclipse project.
-- In the project folder run: `gradle compileCeylon`
+- From the project _ceylon-wildfly-swarm-jaxrs_ folder run: `gradle compileCeylon`
 - Refresh the project in eclipse.
 
 ## Run
