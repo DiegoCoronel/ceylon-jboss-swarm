@@ -9,19 +9,15 @@ import javax.persistence {
 	table
 }
 
-import java.lang {
-	JInteger = Integer
-}
-
 entity
-table{ name = "REST_DB_ACCESS"; }
-shared class Employee(name, id = null) {
+table { name = "REST_DB_ACCESS"; }
+shared class Employee(name, id = -1) {
 	
 	id
-	generatedValue{strategy = auto;}
-	shared JInteger? id;
+	generatedValue { strategy = auto; }
+	shared Integer id;
 	
-	column{length = 40;}
+	column { length = 40; }
 	shared String name;
 	
 }

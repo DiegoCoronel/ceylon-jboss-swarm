@@ -1,11 +1,22 @@
 import ceylon.interop.java {
 	javaClass
 }
+
 import jaxrs.example.entity {
 	Employee
 }
+import jaxrs.example.provider {
+	PersistenceProvider
+}
 import jaxrs.example.resource {
 	EmployeeResource
+}
+import jaxrs.example.service {
+	EmployeeService
+}
+
+import org.jboss.shrinkwrap.api {
+	ShrinkWrap
 }
 import org.jboss.shrinkwrap.api.asset {
 	ClassLoaderAsset
@@ -13,18 +24,9 @@ import org.jboss.shrinkwrap.api.asset {
 import org.wildfly.swarm.jaxrs {
 	JAXRSArchive
 }
-import org.jboss.shrinkwrap.api {
-	ShrinkWrap
-}
-import jaxrs.example.provider {
-	PersistenceProvider
-}
-import jaxrs.example.service {
-	EmployeeService
-}
 
 JAXRSArchive newJaxRsExampleDeployment {
-	JAXRSArchive deployment = ShrinkWrap.create(javaClass<JAXRSArchive>());
+	value deployment = ShrinkWrap.create(javaClass<JAXRSArchive>());
 
 	//Application Configuration
 	deployment.addClasses(javaClass<RestApplication>());
@@ -40,16 +42,14 @@ JAXRSArchive newJaxRsExampleDeployment {
 	
 	//Resources
 	deployment.addResource(javaClass<EmployeeResource>());
-	
+
+	function asset(String path)
+			=> [ ClassLoaderAsset(path, javaClass<RestApplication>().classLoader),
+				 "classes/" + path ];
+
 	//Resources
-	deployment.addAsWebInfResource(
-		ClassLoaderAsset("META-INF/persistence.xml", javaClass<RestApplication>().classLoader), 
-		"classes/META-INF/persistence.xml"
-	);
-	deployment.addAsWebInfResource(
-		ClassLoaderAsset("META-INF/load.sql", javaClass<RestApplication>().classLoader), 
-		"classes/META-INF/load.sql"
-	);
+	deployment.addAsWebInfResource(*asset("META-INF/persistence.xml"));
+	deployment.addAsWebInfResource(*asset("META-INF/load.sql"));
 	deployment.addAllDependencies();
 	
 	return deployment;
