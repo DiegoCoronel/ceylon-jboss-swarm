@@ -20,3 +20,16 @@ Eclipse:
 
 - Create the executable jar in the project folder: `ceylon swarm --provided-module javax:org.wildfly.swarm:jaxrs jaxrs.example/1.0.0`
 - Run the executable jar created: `java -jar jaxrs.example-1.0.0-swarm.jar`
+
+## Using the service:
+
+- Query All
+ - http://localhost:8080/rest/employee
+
+- Persist Employee
+ - POST http://localhost:8080/rest/employee
+```json
+{
+    "name" : "Diego Coronel"
+}
+```
