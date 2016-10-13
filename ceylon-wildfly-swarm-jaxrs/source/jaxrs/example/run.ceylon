@@ -22,5 +22,3 @@ shared void run() {
 	swarm.start();
 	swarm.deploy(newJaxRsExampleDeployment);
 }
-
-// ~/Work/Git/ceylon/ceylon/dist/dist/bin/ceylon swarm --provided-module javax:org.wildfly.swarm:jaxrs jaxrs.example/1.0.0
