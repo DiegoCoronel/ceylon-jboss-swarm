@@ -33,3 +33,12 @@ Eclipse:
     "name" : "Diego Coronel"
 }
 ```
+
+## IDE Support
+
+If you want better integration please vote:
+- [For intellij](https://github.com/ceylon/ceylon-ide-intellij/issues/513)
+- [For eclipse](https://github.com/ceylon/ceylon-ide-eclipse/issues/1835)
+
+Ceylon guys really matter about their community and will get done if demand exists.
+
