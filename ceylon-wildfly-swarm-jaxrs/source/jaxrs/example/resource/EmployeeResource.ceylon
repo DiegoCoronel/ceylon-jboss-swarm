@@ -5,6 +5,7 @@ import ceylon.interop.java {
 import java.util {
 	JList=List
 }
+
 import javax.enterprise.context {
 	applicationScoped
 }
@@ -35,17 +36,18 @@ shared class EmployeeResource() {
 
 	inject
 	late EntityManager entityManager;
-	
+
 	inject
 	late EmployeeService service;
-	
+
 	get
-	produces({"application/json"})	
-	shared default JList<Employee> get() => entityManager.createQuery("FROM Employee", javaClass<Employee>()).resultList;
+	produces(["application/json"])
+	shared default JList<Employee> get()
+			=> entityManager.createQuery("from Employee", javaClass<Employee>()).resultList;
 	
 	post
-	consumes({"application/json"})
-	produces({"application/json"})	
+	consumes(["application/json"])
+	produces(["application/json"])
 	shared default Employee persist(Employee employee) {
 		service.persist(employee);
 		return employee;

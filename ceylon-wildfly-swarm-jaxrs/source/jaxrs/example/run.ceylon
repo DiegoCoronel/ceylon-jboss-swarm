@@ -12,7 +12,7 @@ import jaxrs.example.database {
 "Run the module `jaxrs.example`."
 shared void run() {
     
-    Swarm swarm = Swarm();
+    value swarm = Swarm();
     
     swarm.fraction(DatasourcesFraction()
          .jdbcDriver("h2", H2JdbcDriverConsumer())
@@ -21,4 +21,5 @@ shared void run() {
 	
 	swarm.start();
 	swarm.deploy(newJaxRsExampleDeployment);
+
 }

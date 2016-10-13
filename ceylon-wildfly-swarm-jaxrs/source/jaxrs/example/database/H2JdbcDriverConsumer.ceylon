@@ -3,7 +3,8 @@ import org.wildfly.swarm.config.datasources {
 	JDBCDriverConsumer
 }
 
-shared class H2JdbcDriverConsumer<T>() satisfies JDBCDriverConsumer<T>
+shared class H2JdbcDriverConsumer<T>()
+		satisfies JDBCDriverConsumer<T>
 		given T satisfies JDBCDriver<T> {
 	
 	shared actual void accept(T d) {

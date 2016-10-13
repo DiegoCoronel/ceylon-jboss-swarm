@@ -3,7 +3,8 @@ import org.wildfly.swarm.config.datasources {
 	DataSource
 }
 
-shared class H2DataSourceConsumer<T>() satisfies DataSourceConsumer<T>
+shared class H2DataSourceConsumer<T>()
+		satisfies DataSourceConsumer<T>
 		given T satisfies DataSource<T> {
 	shared actual void accept(T ds) {
 		ds.driverName("h2");
