@@ -46,7 +46,6 @@ shared class EmployeeResource() {
 	post
 	consumes({"application/json"})
 	produces({"application/json"})	
-	
 	shared default Employee persist(Employee employee) {
 		service.persist(employee);
 		return employee;
