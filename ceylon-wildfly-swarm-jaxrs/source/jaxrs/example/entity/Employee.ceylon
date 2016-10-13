@@ -3,7 +3,7 @@ import javax.persistence {
 	generatedValue,
 	column,
 	GenerationType {
-		auto = AUTO
+		auto
 	},
 	entity,
 	table
