@@ -24,7 +24,7 @@ shared class EmployeeService(EntityManager entityManager) {
 
 	transactional
 	shared default void persist(Employee employee) {
-		assert (employee.id == -1);
+		assert (employee.id == 0);
 		entityManager.persist(employee);
 	}
 	

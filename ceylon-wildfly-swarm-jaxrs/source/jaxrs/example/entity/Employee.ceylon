@@ -11,7 +11,7 @@ import javax.persistence {
 
 entity
 table { name = "REST_DB_ACCESS"; }
-shared class Employee(name, id = -1) {
+shared class Employee(name, id = 0) {
 	
 	id
 	generatedValue { strategy = auto; }
