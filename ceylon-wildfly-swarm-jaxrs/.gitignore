@@ -2,3 +2,6 @@
 .gradle/
 modules/
 .settings/
+build/dependency-poms/
+build/maven-repository/
+build/module-descriptors/
