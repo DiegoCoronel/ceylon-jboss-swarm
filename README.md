@@ -18,6 +18,7 @@ Eclipse:
 
 ## Run
 
+- Be sure that ceylon swarm plugin is installed: `ceylon plugin install ceylon.swarm`
 - Create the executable jar in the project _ceylon-wildfly-swarm-jaxrs_ folder: `ceylon swarm --provided-module javax:org.wildfly.swarm:jaxrs jaxrs.example/1.0.0`
 - Run the executable jar created: `java -jar jaxrs.example-1.0.0-swarm.jar`
 
