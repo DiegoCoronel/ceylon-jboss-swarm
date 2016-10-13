@@ -16,6 +16,10 @@ apply plugin: 'com.athaydes.ceylon'
 repositories {
     mavenLocal()
     mavenCentral()
+    jcenter()
+    maven {
+    	url = "https://repository.jboss.org/nexus/content/repositories/thirdparty-releases/"
+    }
 }
 
 ceylon {
