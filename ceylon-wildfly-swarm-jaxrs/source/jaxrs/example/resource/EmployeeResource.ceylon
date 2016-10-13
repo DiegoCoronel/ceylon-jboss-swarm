@@ -10,7 +10,7 @@ import javax.enterprise.context {
 	applicationScoped
 }
 import javax.inject {
-	inject = inject__FIELD
+	inject
 }
 import javax.persistence {
 	EntityManager
@@ -34,11 +34,16 @@ path("/employee")
 applicationScoped
 shared class EmployeeResource() {
 
-	inject
 	late EntityManager entityManager;
 
-	inject
 	late EmployeeService service;
+
+	inject
+	shared void init(EntityManager entityManager,
+					 EmployeeService service) {
+		this.entityManager = entityManager;
+		this.service = service;
+	}
 
 	get
 	produces(["application/json"])

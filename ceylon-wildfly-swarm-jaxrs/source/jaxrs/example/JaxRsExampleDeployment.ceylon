@@ -26,7 +26,7 @@ import org.wildfly.swarm.jaxrs {
 }
 
 JAXRSArchive newJaxRsExampleDeployment {
-	value deployment = ShrinkWrap.create(javaClass<JAXRSArchive>());
+	JAXRSArchive deployment = ShrinkWrap.create(javaClass<JAXRSArchive>());
 
 	//Application Configuration
 	deployment.addClasses(javaClass<RestApplication>());

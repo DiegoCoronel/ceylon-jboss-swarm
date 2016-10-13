@@ -12,8 +12,12 @@ import javax.persistence {
 applicationScoped
 shared class PersistenceProvider() {
 
-	persistenceContext
 	late EntityManager entityManager;
+
+	persistenceContext
+	shared void setPersistenceContext(EntityManager entityManager) {
+		this.entityManager = entityManager;
+	}
 
 	produces
 	shared EntityManager getEntityManager()

@@ -1,7 +1,7 @@
-import org.wildfly.swarm{
+import org.wildfly.swarm {
 	Swarm
 }
-import org.wildfly.swarm.datasources{
+import org.wildfly.swarm.datasources {
 	DatasourcesFraction
 }
 import jaxrs.example.database {
@@ -11,7 +11,7 @@ import jaxrs.example.database {
 
 "Run the module `jaxrs.example`."
 shared void run() {
-    
+
     value swarm = Swarm();
     
     swarm.fraction(DatasourcesFraction()
