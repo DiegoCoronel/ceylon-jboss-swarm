@@ -9,9 +9,9 @@ The project is based on [JBoss Swarm - Examples][].
 
 You'll need the following prerequisites:
 
-- Ceylon 1.3.1-snapshot
-- gradle 3.0+
-- Ceylon Swarm plugin
+- [Ceylon 1.3.1-snapshot](https://github.com/ceylon/ceylon/), built from source
+- [Gradle 3.0+](https://gradle.org/gradle-download/)
+- [Ceylon Swarm plugin](https://github.com/ceylon/ceylon.swarm)
 
 To import the project in Eclipse:
 
