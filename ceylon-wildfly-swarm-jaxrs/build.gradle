@@ -24,5 +24,4 @@ repositories {
 
 ceylon {
     module = "jaxrs.example"
-    ceylonLocation = "/Users/DiegoCoronel/Work/Git/ceylon/ceylon/dist/dist/bin/ceylon"
 }
