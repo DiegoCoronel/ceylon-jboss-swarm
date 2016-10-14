@@ -1,5 +1,5 @@
 import javax.enterprise.context {
-	applicationScoped
+	requestScoped
 }
 import javax.enterprise.inject {
 	produces
@@ -9,7 +9,7 @@ import javax.persistence {
 	EntityManager
 }
 
-applicationScoped
+requestScoped
 shared class PersistenceProvider() {
 
 	late EntityManager entityManager;

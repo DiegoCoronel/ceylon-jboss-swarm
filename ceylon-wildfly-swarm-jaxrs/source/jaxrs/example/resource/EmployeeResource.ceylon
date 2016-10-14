@@ -39,7 +39,7 @@ shared class EmployeeResource() {
 	late EmployeeService service;
 
 	inject
-	shared void init(EntityManager entityManager,
+	shared default void init(EntityManager entityManager,
 					 EmployeeService service) {
 		this.entityManager = entityManager;
 		this.service = service;
