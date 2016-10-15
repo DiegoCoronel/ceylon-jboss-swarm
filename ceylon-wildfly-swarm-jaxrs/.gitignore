@@ -5,3 +5,4 @@ modules/
 build/dependency-poms/
 build/maven-repository/
 build/module-descriptors/
+/classes/
