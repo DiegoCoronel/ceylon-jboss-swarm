@@ -22,7 +22,7 @@ You'll need the following prerequisites to get started:
 
 ### Creating a local repository
 
-First, we'll use the Ceylon Swarm plugin for Gradle to create a local
+First, we'll use the Ceylon plugin for Gradle to create a local Maven
 repository containing the many parts of Wildfly Swarm. From the folder
 `ceylon-wildfly-swarm-jaxrs`, run:
 
