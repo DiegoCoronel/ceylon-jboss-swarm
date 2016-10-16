@@ -5,11 +5,9 @@ import javax.persistence {
 	GenerationType {
 		auto
 	},
-	entity,
-	table
+	entity
 }
 
-table { name = "REST_DB_ACCESS"; }
 shared entity class Employee(name, id = 0) {
 	
 	id
