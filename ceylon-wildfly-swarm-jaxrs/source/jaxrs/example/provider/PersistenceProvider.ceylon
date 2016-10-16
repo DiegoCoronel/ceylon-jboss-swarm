@@ -23,3 +23,7 @@ shared class PersistenceProvider() {
 	shared EntityManager getEntityManager()
 			=> entityManager;
 }
+
+
+//produces requestScoped persistenceContext
+//late EntityManager entityManager;
