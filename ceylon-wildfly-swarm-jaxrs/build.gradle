@@ -24,4 +24,6 @@ repositories {
 
 ceylon {
     module = "jaxrs.example"
+//    ceylonLocation = "/Users/gavin/ceylon/dist/dist/bin/ceylon"
+    importJars = false
 }

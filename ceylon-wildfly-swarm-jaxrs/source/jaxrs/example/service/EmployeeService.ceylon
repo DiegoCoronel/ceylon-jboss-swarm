@@ -1,3 +1,11 @@
+import ceylon.interop.java {
+	javaClass
+}
+
+import java.util {
+	JList=List
+}
+
 import javax.ejb {
 	stateless,
 	localBean
@@ -16,7 +24,6 @@ import jaxrs.example.entity {
 	Employee
 }
 
-
 inject
 stateless
 localBean
@@ -27,5 +34,10 @@ shared class EmployeeService(EntityManager entityManager) {
 		assert (employee.id == 0);
 		entityManager.persist(employee);
 	}
+
+	shared default JList<Employee> allEmployees()
+			=> entityManager
+				.createQuery("from Employee", javaClass<Employee>())
+				.resultList;
 	
 }

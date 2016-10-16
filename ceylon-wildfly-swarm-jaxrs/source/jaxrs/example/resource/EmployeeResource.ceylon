@@ -1,7 +1,3 @@
-import ceylon.interop.java {
-	javaClass
-}
-
 import java.util {
 	JList=List
 }
@@ -11,9 +7,6 @@ import javax.enterprise.context {
 }
 import javax.inject {
 	inject
-}
-import javax.persistence {
-	EntityManager
 }
 import javax.ws.rs {
 	path,
@@ -34,21 +27,14 @@ path("/employee")
 applicationScoped
 shared class EmployeeResource() {
 
-	late EntityManager entityManager;
-
-	late EmployeeService service;
-
-	inject
-	shared default void init(EntityManager entityManager,
-					 EmployeeService service) {
-		this.entityManager = entityManager;
-		this.service = service;
-	}
+	//we can't use constructor injection
+	//with JAX-RS (field or method only)
+	inject late EmployeeService service;
 
 	get
 	produces(["application/json"])
 	shared default JList<Employee> get()
-			=> entityManager.createQuery("from Employee", javaClass<Employee>()).resultList;
+			=> service.allEmployees();
 	
 	post
 	consumes(["application/json"])
@@ -57,5 +43,5 @@ shared class EmployeeResource() {
 		service.persist(employee);
 		return employee;
 	}
-	
+
 }

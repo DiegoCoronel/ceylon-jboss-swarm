@@ -8,9 +8,6 @@ encoding=UTF-8
 flatclasspath=true
 offline=false
 autoexportmavendependencies=true
-overrides=build/overrides.xml
-
-
 
 [formattool]
 profile=default
