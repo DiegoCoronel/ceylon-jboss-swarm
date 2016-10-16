@@ -16,8 +16,7 @@ spare time. The project is based these [WildFly Swarm examples][].
 
 You'll need the following prerequisites to get started:
 
-- [Ceylon 1.3.1-snapshot](https://github.com/ceylon/ceylon/), 
-  built from source
+- [Ceylon 1.3.0+](https://ceylon-lang.org/download)
 - [Ceylon Swarm plugin](https://github.com/ceylon/ceylon.swarm)
 
 If you want to use Gradle to compile the example, you'll also 
@@ -45,9 +44,9 @@ To compile the example using Gradle, type:
 
     gradle compileCeylon
 
-Note that this also generates some additional artifacts in the 
+(Note that this also generates some additional artifacts in the 
 `build` subdirectory. You can clean them up later using 
-`gradle clean`.
+`gradle clean`.)
 
 ### Packaging the executable jar
 
@@ -58,7 +57,7 @@ Make sure sure that the `ceylon swarm` plugin is installed:
 Next, repackage the module `jaxrs.example` as an executable jar 
 by running:
    
-    ceylon swarm --provided-module javax:org.wildfly.swarm:jaxrs jaxrs.example/1.0.0
+    ceylon swarm --provided-module javax:org.wildfly.swarm:jaxrs jaxrs.example
 
 This will create the file `jaxrs.example-1.0.0-swarm.jar`, which 
 is an executable "fat" jar containing your service and all its 
@@ -108,4 +107,3 @@ If you want better IDE integration please vote:
 
 The Ceylon guys really care about their community and will get it done 
 if demand exists.
-
