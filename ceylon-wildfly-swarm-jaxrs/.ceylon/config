@@ -5,9 +5,9 @@ resource=resource
 
 [defaults]
 encoding=UTF-8
-flatclasspath=true
+flatclasspath=false
 offline=false
-autoexportmavendependencies=true
+autoexportmavendependencies=false
 
 [formattool]
 profile=default
