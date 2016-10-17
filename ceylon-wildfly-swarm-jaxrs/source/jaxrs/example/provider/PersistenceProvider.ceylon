@@ -12,18 +12,8 @@ import javax.persistence {
 requestScoped
 shared class PersistenceProvider() {
 
+	suppressWarnings("unusedDeclaration")
+	produces persistenceContext
 	late EntityManager entityManager;
 
-	persistenceContext
-	shared void setPersistenceContext(EntityManager entityManager) {
-		this.entityManager = entityManager;
-	}
-
-	produces
-	shared EntityManager getEntityManager()
-			=> entityManager;
 }
-
-
-//produces requestScoped persistenceContext
-//late EntityManager entityManager;
