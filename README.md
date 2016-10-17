@@ -27,6 +27,17 @@ need:
 Now, go to the directory `ceylon-wildfly-swarm-jaxrs`, which
 contains the example project.
 
+### For the impatient
+
+You can compile and run it using:
+    
+    ceylon plugin install ceylon.swarm
+    ceylon compile && ceylon swarm --provided-module javax:org.wildfly.swarm:jaxrs jaxrs.example && java -jar jaxrs.example-1.0.0-swarm.jar
+
+And hit: <http://localhost:8080/rest/employee>
+
+Now let's understand the individual steps...
+
 ### Compiling
 
 To compile the example, type:
