@@ -1,5 +1,6 @@
 import ceylon.interop.java {
-	javaClass
+	javaClass,
+	javaString
 }
 
 import java.util {
@@ -31,7 +32,7 @@ shared class EmployeeService(EntityManager entityManager) {
 
 	transactional
 	shared default void persist(Employee employee) {
-		assert (!employee.id exists);
+		assert (employee.id.zero);
 		entityManager.persist(employee);
 	}
 
@@ -39,7 +40,7 @@ shared class EmployeeService(EntityManager entityManager) {
 			=> entityManager
 				.createQuery("from Employee e where e.name = :name",
 							 javaClass<Employee>())
-				.setParameter("name", name)
+				.setParameter("name", javaString(name))
 				.resultList;
 
 	shared default JList<Employee> allEmployees(Integer max)
