@@ -7,14 +7,25 @@ import javax.persistence {
 	},
 	entity
 }
+import java.lang {
+    Long
+}
+import javax.xml.bind.annotation.adapters {
+	xmlJavaTypeAdapter
+}
 
-shared entity class Employee(name, id = 0) {
+shared entity class Employee(name, id = null, year=null) {
 	
 	id
 	generatedValue { strategy = auto; }
-	shared Integer id;
+	shared Long? id;
 	
 	column { length = 40; }
-	shared String name;
-	
+	xmlJavaTypeAdapter(`class StringAdapter`)
+	shared String? name;
+
+	column
+	xmlJavaTypeAdapter(`class IntegerAdapter`)
+	shared Integer? year;
+
 }

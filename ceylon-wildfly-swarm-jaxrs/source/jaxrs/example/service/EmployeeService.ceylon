@@ -31,13 +31,23 @@ shared class EmployeeService(EntityManager entityManager) {
 
 	transactional
 	shared default void persist(Employee employee) {
-		assert (employee.id == 0);
+		assert (!employee.id exists);
 		entityManager.persist(employee);
 	}
 
-	shared default JList<Employee> allEmployees()
+	shared default JList<Employee> employeesForName(String name)
 			=> entityManager
-				.createQuery("from Employee", javaClass<Employee>())
+				.createQuery("from Employee e where e.name = :name",
+							 javaClass<Employee>())
+				.setParameter("name", name)
 				.resultList;
-	
+
+	shared default JList<Employee> allEmployees(Integer max)
+			=> entityManager
+				.createQuery("from Employee",
+						     javaClass<Employee>())
+				.setMaxResults(max)
+				.resultList;
+
+
 }
