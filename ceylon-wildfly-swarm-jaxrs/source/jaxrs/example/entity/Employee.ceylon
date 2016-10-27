@@ -1,27 +1,24 @@
 import javax.persistence {
-	id,
-	generatedValue,
-	column,
-	GenerationType {
-		auto
-	},
-	entity
+    id,
+    generatedValue,
+    column,
+    entity
+}
+import javax.xml.bind.annotation {
+    xmlAccessorType,
+    XmlAccessType
 }
 
-import javax.xml.bind.annotation.adapters {
-	xmlJavaTypeAdapter
-}
+xmlAccessorType (XmlAccessType.field)
+shared entity class Employee(name) {
 
-shared entity class Employee(name, id=0, year=null) {
-
-	generatedValue { strategy = auto; }
-	shared id Integer id;
+	generatedValue id
+    shared late Integer id;
 	
-	column { length = 40; }
+	column { length = 50; }
 	shared String name;
 
 	column
-	xmlJavaTypeAdapter(`class IntegerAdapter`)
-	shared Integer? year;
+	shared variable Integer? year = null;
 
 }
