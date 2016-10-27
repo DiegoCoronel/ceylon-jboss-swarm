@@ -30,7 +30,7 @@ shared class EmployeeResource() {
 
 	get
 	produces(["application/json"])
-	shared default JList<Employee> get(
+	shared JList<Employee> get(
 		queryParam("name") String? name,
 		queryParam("max") Integer? max)
 			=> if (exists name)
@@ -40,7 +40,7 @@ shared class EmployeeResource() {
 	post
 	consumes(["application/json"])
 	produces(["application/json"])
-	shared default Employee persist(Employee employee) {
+	shared Employee persist(Employee employee) {
 		service.persist(employee);
 		return employee;
 	}

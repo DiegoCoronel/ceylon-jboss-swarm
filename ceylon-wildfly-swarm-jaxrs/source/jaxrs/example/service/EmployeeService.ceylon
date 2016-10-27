@@ -31,19 +31,19 @@ localBean
 shared class EmployeeService(EntityManager entityManager) {
 
 	transactional
-	shared default void persist(Employee employee) {
+	shared void persist(Employee employee) {
 //		assert (employee.id is Null);
 		entityManager.persist(employee);
 	}
 
-	shared default JList<Employee> employeesForName(String name)
+	shared JList<Employee> employeesForName(String name)
 			=> entityManager
 				.createQuery("from Employee e where e.name = :name",
 							 javaClass<Employee>())
 				.setParameter("name", javaString(name))
 				.resultList;
 
-	shared default JList<Employee> allEmployees(Integer max)
+	shared JList<Employee> allEmployees(Integer max)
 			=> entityManager
 				.createQuery("from Employee",
 						     javaClass<Employee>())

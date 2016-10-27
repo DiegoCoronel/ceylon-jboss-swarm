@@ -1,15 +1,10 @@
 import javax.persistence {
-    id,
-    generatedValue,
-    column,
-    entity
-}
-import javax.xml.bind.annotation {
-    xmlAccessorType,
-    XmlAccessType
+	id,
+	generatedValue,
+	column,
+	entity
 }
 
-xmlAccessorType (XmlAccessType.field)
 shared entity class Employee(name) {
 
 	generatedValue id
