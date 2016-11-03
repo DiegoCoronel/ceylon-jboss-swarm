@@ -19,11 +19,6 @@ You'll need the following prerequisites to get started:
 - [Ceylon 1.3.0+](https://ceylon-lang.org/download)
 - [Ceylon Swarm plugin](https://github.com/ceylon/ceylon.swarm)
 
-If you want to use Gradle to compile the example, you'll also 
-need:
-
-- [Gradle 3.0+](https://gradle.org/gradle-download/)
-
 Now, go to the directory `ceylon-wildfly-swarm-jaxrs`, which
 contains the example project.
 
@@ -46,18 +41,6 @@ To compile the example, type:
 
 This will compile the module `jaxrs.example` into the `modules` 
 subdirectory.
-
-Alternatively, you may compile using Gradle.
-
-### Compiling using Gradle (Optional)
-
-To compile the example using Gradle, type:
-
-    gradle compileCeylon
-
-(Note that this also generates some additional artifacts in the 
-`build` subdirectory. You can clean them up later using 
-`gradle clean`.)
 
 ### Packaging the executable jar
 

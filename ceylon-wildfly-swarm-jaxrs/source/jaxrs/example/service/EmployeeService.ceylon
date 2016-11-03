@@ -38,15 +38,17 @@ shared class EmployeeService(EntityManager entityManager) {
 
 	shared JList<Employee> employeesForName(String name)
 			=> entityManager
-				.createQuery("from Employee e where e.name = :name",
-							 javaClass<Employee>())
+				.createQuery<Employee>(
+						"from Employee e where e.name = :name",
+						 `class Employee`)
 				.setParameter("name", javaString(name))
 				.resultList;
 
 	shared JList<Employee> allEmployees(Integer max)
 			=> entityManager
-				.createQuery("from Employee",
-						     javaClass<Employee>())
+				.createQuery<Employee>(
+						"from Employee",
+						`class Employee`)
 				.setMaxResults(max)
 				.resultList;
 
