@@ -23,6 +23,9 @@ import javax.transaction {
 import jaxrs.example.entity {
     Employee
 }
+import java.lang {
+    Long
+}
 
 inject
 stateless
@@ -34,6 +37,9 @@ shared class EmployeeService(EntityManager entityManager) {
 //		assert (employee.id is Null);
 		entityManager.persist(employee);
 	}
+
+	shared Employee? employeeForId(Integer id)
+			=> entityManager.find<Employee>(`class Employee`, Long(id));
 
 	shared JList<Employee> employeesForName(String name)
 			=> entityManager

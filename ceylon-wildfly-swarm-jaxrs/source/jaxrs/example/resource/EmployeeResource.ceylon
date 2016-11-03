@@ -1,5 +1,6 @@
 import java.util {
-	JList=List
+	JList=List,
+	Arrays { asList }
 }
 
 import javax.inject {
@@ -32,8 +33,11 @@ shared class EmployeeResource() {
 	produces(["application/json"])
 	shared JList<Employee> get(
 		queryParam("name") String? name,
+		queryParam("id") Integer? id,
 		queryParam("max") Integer? max)
-			=> if (exists name)
+			=> if (exists id)
+			then asList(if (exists emp = service.employeeForId(id)) emp)
+			else if (exists name)
 			then service.employeesForName(name)
 			else service.allEmployees(max else 100);
 	
