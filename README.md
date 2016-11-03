@@ -89,6 +89,12 @@ Project metadata for both Eclipse and IntelliJ is included. Make
 sure you have Ceylon IDE for [Eclipse][] or [IntelliJ][] installed 
 in your preferred IDE, and import the project.
 
+To run the project in IntelliJ, open the file
+
+    source/jaxrs/example/module.ceylon
+
+and click the green triangle in the gutter.
+
 [Eclipse]: https://ceylon-lang.org/documentation/1.3/ide/eclipse/
 [IntelliJ]: https://ceylon-lang.org/documentation/1.3/ide/intellij/
 
