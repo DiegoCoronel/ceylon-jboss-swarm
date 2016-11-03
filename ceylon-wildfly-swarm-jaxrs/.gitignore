@@ -1,8 +1,11 @@
 /.exploded/
 .gradle/
+.idea/libraries/
 modules/
 .settings/
 build/dependency-poms/
 build/maven-repository/
 build/module-descriptors/
 /classes/
+jaxrs.example-1.0.0*
+
