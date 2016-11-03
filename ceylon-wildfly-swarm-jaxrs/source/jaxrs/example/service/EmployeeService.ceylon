@@ -1,28 +1,27 @@
 import ceylon.interop.java {
-	javaClass,
-	javaString
+    javaString
 }
 
 import java.util {
-	JList=List
+    JList=List
 }
 
 import javax.ejb {
-	stateless,
-	localBean
+    stateless,
+    localBean
 }
 import javax.inject {
-	inject
+    inject
 }
 import javax.persistence {
-	EntityManager
+    EntityManager
 }
 import javax.transaction {
-	transactional
+    transactional
 }
 
 import jaxrs.example.entity {
-	Employee
+    Employee
 }
 
 inject
