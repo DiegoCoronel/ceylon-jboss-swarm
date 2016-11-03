@@ -3,11 +3,15 @@
 source=source
 resource=resource
 
+[compiler.jvm]
+ee=true
+
 [defaults]
 encoding=UTF-8
 flatclasspath=false
 offline=false
 autoexportmavendependencies=false
+fullyexportmavendependencies=false
 
 [formattool]
 profile=default
