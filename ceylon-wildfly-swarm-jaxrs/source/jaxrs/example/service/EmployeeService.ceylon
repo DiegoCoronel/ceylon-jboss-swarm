@@ -57,5 +57,4 @@ shared class EmployeeService(EntityManager entityManager) {
 				.setMaxResults(max)
 				.resultList;
 
-
 }
