@@ -1,7 +1,7 @@
 /.exploded/
 .gradle/
 .idea/libraries/
-modules/
+/modules/
 .settings/
 build/dependency-poms/
 build/maven-repository/
