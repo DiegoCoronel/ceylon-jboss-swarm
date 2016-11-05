@@ -87,7 +87,8 @@ The service has the following endpoints:
 
 Project metadata for both Eclipse and IntelliJ is included. Make 
 sure you have Ceylon IDE for [Eclipse][] or [IntelliJ][] installed 
-in your preferred IDE, and import the project.
+in your preferred IDE, and import the project from the folder
+`ceylon-wildfly-swarm/ceylon-wildfly-swarm-jaxrs`.
 
 To run the project in IntelliJ, open the file
 
