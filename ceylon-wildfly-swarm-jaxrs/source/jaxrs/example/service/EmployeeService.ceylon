@@ -1,30 +1,24 @@
-import ceylon.interop.java {
-    javaString
+import ceylon.interop.persistence {
+	EntityManager
 }
 
 import java.util {
-    JList=List
+	List
 }
 
 import javax.ejb {
-    stateless,
-    localBean
+	stateless,
+	localBean
 }
 import javax.inject {
-    inject
-}
-import javax.persistence {
-    EntityManager
+	inject
 }
 import javax.transaction {
-    transactional
+	transactional
 }
 
 import jaxrs.example.entity {
-    Employee
-}
-import java.lang {
-    Long
+	Employee
 }
 
 inject
@@ -39,22 +33,17 @@ shared class EmployeeService(EntityManager entityManager) {
 	}
 
 	shared Employee? employeeForId(Integer id)
-			=> entityManager.find<Employee>(`class Employee`, Long(id));
+			=> entityManager.find(`Employee`, id);
 
-	shared JList<Employee> employeesForName(String name)
+	shared List<out Employee> employeesForName(String name)
 			=> entityManager
-				.createQuery<Employee>(
-						"from Employee e where e.name = :name",
-						 `class Employee`)
-				.setParameter("name", javaString(name))
-				.resultList;
+				.Query(`Employee`, "from Employee e where e.name = :name")
+				.setArgument("name", name)
+				.getJavaResultList();
 
-	shared JList<Employee> allEmployees(Integer max)
+	shared List<out Employee> allEmployees(Integer max)
 			=> entityManager
-				.createQuery<Employee>(
-						"from Employee",
-						`class Employee`)
-				.setMaxResults(max)
-				.resultList;
+				.Query(`Employee`, "from Employee", max)
+				.getJavaResultList();
 
 }

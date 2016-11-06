@@ -1,6 +1,8 @@
 import java.util {
-	JList=List,
-	Arrays { asList }
+	List,
+	Arrays {
+		asList
+	}
 }
 
 import javax.inject {
@@ -31,7 +33,7 @@ shared class EmployeeResource() {
 
 	get
 	produces(["application/json"])
-	shared JList<Employee> get(
+	shared List<out Employee> get(
 		queryParam("name") String? name,
 		queryParam("id") Integer? id,
 		queryParam("max") Integer? max)

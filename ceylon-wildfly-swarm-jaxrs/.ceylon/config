@@ -12,6 +12,7 @@ flatclasspath=false
 offline=false
 autoexportmavendependencies=false
 fullyexportmavendependencies=false
+overrides=overrides.xml
 
 [formattool]
 profile=default

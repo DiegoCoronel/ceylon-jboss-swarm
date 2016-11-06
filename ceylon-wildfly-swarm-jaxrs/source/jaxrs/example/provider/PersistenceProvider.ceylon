@@ -1,3 +1,7 @@
+import ceylon.interop.persistence {
+	EntityManager
+}
+
 import javax.enterprise.context {
 	requestScoped
 }
@@ -6,14 +10,16 @@ import javax.enterprise.inject {
 }
 import javax.persistence {
 	persistenceContext,
-	EntityManager
+	JEntityManager=EntityManager
 }
 
 requestScoped
 shared class PersistenceProvider() {
 
-	suppressWarnings("unusedDeclaration")
-	produces persistenceContext
-	late EntityManager entityManager;
+	persistenceContext
+	late JEntityManager jpaEntityManager;
+
+	produces shared EntityManager entityManager
+			=> EntityManager(jpaEntityManager);
 
 }

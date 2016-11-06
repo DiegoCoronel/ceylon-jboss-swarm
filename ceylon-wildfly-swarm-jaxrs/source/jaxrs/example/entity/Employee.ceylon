@@ -8,7 +8,7 @@ import javax.persistence {
 shared entity class Employee(name) {
 
 	generatedValue id
-    shared late Integer id;
+	shared late Integer id;
 	
 	column { length = 50; }
 	shared String name;
