@@ -51,7 +51,7 @@ Make sure sure that the `ceylon swarm` plugin is installed:
 Next, repackage the module `jaxrs.example` as an executable jar 
 by running:
    
-    ceylon swarm --provided-module javax:org.wildfly.swarm:jaxrs jaxrs.example
+    ceylon swarm --provided-module javax.javaeeapi jaxrs.example
 
 This will create the file `jaxrs.example-1.0.0-swarm.jar`, which 
 is an executable "fat" jar containing your service and all its 
