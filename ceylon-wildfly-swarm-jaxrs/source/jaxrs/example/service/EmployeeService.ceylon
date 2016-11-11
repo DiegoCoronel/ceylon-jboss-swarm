@@ -35,15 +35,15 @@ shared class EmployeeService(EntityManager entityManager) {
 
 	shared List<out Employee> employeesForName(String name)
 			=> entityManager
-				.createQuery("from Employee e where e.name = :name",
+				.createTypedQuery("from Employee e where e.name = :name",
 							 `Employee`)
 				.setParameter("name", name)
-				.resultList;
+				.getResultList();
 
 	shared List<out Employee> allEmployees(Integer max)
 			=> entityManager
-				.createQuery("from Employee", `Employee`)
+				.createTypedQuery("from Employee", `Employee`)
 				.setMaxResults(max)
-				.resultList;
+				.getResultList();
 
 }
