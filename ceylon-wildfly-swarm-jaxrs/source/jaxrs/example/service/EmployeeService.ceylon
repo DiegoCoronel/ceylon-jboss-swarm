@@ -36,7 +36,7 @@ shared class EmployeeService(EntityManager entityManager) {
 	shared List<out Employee> employeesForName(String name)
 			=> entityManager
 				.createTypedQuery("from Employee e where e.name = :name",
-							 `Employee`)
+							      `Employee`)
 				.setParameter("name", name)
 				.getResultList();
 
