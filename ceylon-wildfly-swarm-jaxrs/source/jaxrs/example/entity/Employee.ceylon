@@ -2,19 +2,18 @@ import javax.persistence {
 	id,
 	generatedValue,
 	column,
-	GenerationType {
-		auto
-	},
 	entity
 }
 
-shared entity class Employee(name, id = 0) {
+shared entity class Employee(name) {
+
+	generatedValue id
+	shared late Integer id;
 	
-	id
-	generatedValue { strategy = auto; }
-	shared Integer id;
-	
-	column { length = 40; }
+	column { length = 50; }
 	shared String name;
-	
+
+	column
+	shared variable Integer? year = null;
+
 }

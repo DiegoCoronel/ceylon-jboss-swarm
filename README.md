@@ -1,12 +1,14 @@
 # JBoss WildFly Swarm - Ceylon
 
 An example [WildFly Swarm][] service written in [Ceylon][], 
-demonstrating the use of JPA, CDI, and JAX-RS.
+demonstrating the use of JPA, CDI, and JAX-RS. You can also
+run the example on the [WildFly][] application server, and
+probably on any other Java EE application server.
 
-This project is experimental and is being done for fun in my 
-spare time. The project is based these [WildFly Swarm examples][].
+The project is based these [WildFly Swarm examples][].
 
 [Ceylon]: https://ceylon-lang.org
+[WildFly]: http://wildfly.org/
 [WildFly Swarm]: http://wildfly-swarm.io/
 [WildFly Swarm examples]: https://github.com/wildfly-swarm/wildfly-swarm-examples/tree/master/jpa-jaxrs-cdi
 
@@ -19,11 +21,6 @@ You'll need the following prerequisites to get started:
 - [Ceylon 1.3.0+](https://ceylon-lang.org/download)
 - [Ceylon Swarm plugin](https://github.com/ceylon/ceylon.swarm)
 
-If you want to use Gradle to compile the example, you'll also 
-need:
-
-- [Gradle 3.0+](https://gradle.org/gradle-download/)
-
 Now, go to the directory `ceylon-wildfly-swarm-jaxrs`, which
 contains the example project.
 
@@ -32,7 +29,7 @@ contains the example project.
 You can compile and run it using:
     
     ceylon plugin install ceylon.swarm
-    ceylon compile && ceylon swarm --provided-module javax:org.wildfly.swarm:jaxrs jaxrs.example && java -jar jaxrs.example-1.0.0-swarm.jar
+    ceylon compile && ceylon swarm --provided-module javax.javaeeapi jaxrs.example && java -jar jaxrs.example-1.0.0-swarm.jar
 
 And hit: <http://localhost:8080/rest/employee>
 
@@ -47,28 +44,16 @@ To compile the example, type:
 This will compile the module `jaxrs.example` into the `modules` 
 subdirectory.
 
-Alternatively, you may compile using Gradle.
-
-### Compiling using Gradle (Optional)
-
-To compile the example using Gradle, type:
-
-    gradle compileCeylon
-
-(Note that this also generates some additional artifacts in the 
-`build` subdirectory. You can clean them up later using 
-`gradle clean`.)
-
-### Packaging the executable jar
+### Assembling the executable jar
 
 Make sure sure that the `ceylon swarm` plugin is installed: 
    
     ceylon plugin install ceylon.swarm
    
-Next, repackage the module `jaxrs.example` as an executable jar 
+Next, assemble the module `jaxrs.example` as an executable jar 
 by running:
    
-    ceylon swarm --provided-module javax:org.wildfly.swarm:jaxrs jaxrs.example
+    ceylon swarm --provided-module=javax.javaeeapi jaxrs.example
 
 This will create the file `jaxrs.example-1.0.0-swarm.jar`, which 
 is an executable "fat" jar containing your service and all its 
@@ -85,6 +70,10 @@ when you see this message:
 
 > INFO  [org.jboss.as.server] (main) WFLYSRV0010: Deployed "jaxrs.example-1.0.0.war" (runtime-name : "jaxrs.example-1.0.0.war")
 
+To check that it's working, go straight to:
+
+<http://localhost:8080/rest/employee>
+
 ### Testing the service
 
 The service has the following endpoints:
@@ -100,21 +89,46 @@ The service has the following endpoints:
     }
     ```
 
+You can use the [Insomnia REST client][] to test it.
+
+[Insomnia REST client]: https://insomnia.rest/
+
 ## Hacking the example
 
 Project metadata for both Eclipse and IntelliJ is included. Make 
 sure you have Ceylon IDE for [Eclipse][] or [IntelliJ][] installed 
-in your preferred IDE, and import the project.
+in your preferred IDE, and import the project from the folder
+`ceylon-wildfly-swarm/ceylon-wildfly-swarm-jaxrs`.
+
+To run the project in IntelliJ, open the file
+
+    source/jaxrs/example/module.ceylon
+
+and click the green triangle in the gutter.
+
+Tp run the project in Eclipse, select the project or module in the
+Explorer, and select 
+'Run > Run As > Ceylon Java Application Packaged by WildFly Swarm'.
 
 [Eclipse]: https://ceylon-lang.org/documentation/1.3/ide/eclipse/
 [IntelliJ]: https://ceylon-lang.org/documentation/1.3/ide/intellij/
 
-## IDE Support
+## Running on WildFly application server
 
-If you want better IDE integration please vote:
+To run the example on the full [WildFly][] application server, 
+compile the module, and then assemble a Java web archive by typing:
 
-- [For IntelliJ](https://github.com/ceylon/ceylon-ide-intellij/issues/513)
-- [For Eclipse](https://github.com/ceylon/ceylon-ide-eclipse/issues/1835)
+    ceylon war --static-metamodel --provided-module=javax.javaeeapi jaxrs.example
 
-The Ceylon guys really care about their community and will get it done 
-if demand exists.
+This creates the file `jaxrs.example-1.0.0.war`. Copy this file to
+your WildFly `deployments` directory:
+
+    copy jaxrs.example-1.0.0.war $JBOSS_HOME/standalone/deployments/
+
+Start WildFly, if it's not already running:
+
+    standalone.sh --server-config=standalone.xml
+
+And, finally, go to:
+
+<http://localhost:8080/jaxrs.example-1.0.0/rest/employee>

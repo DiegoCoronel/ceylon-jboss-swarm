@@ -1,9 +1,9 @@
-import ceylon.interop.java {
-	javaClass
+import ceylon.interop.persistence {
+	EntityManager
 }
 
 import java.util {
-	JList=List
+	List
 }
 
 import javax.ejb {
@@ -12,9 +12,6 @@ import javax.ejb {
 }
 import javax.inject {
 	inject
-}
-import javax.persistence {
-	EntityManager
 }
 import javax.transaction {
 	transactional
@@ -30,14 +27,23 @@ localBean
 shared class EmployeeService(EntityManager entityManager) {
 
 	transactional
-	shared default void persist(Employee employee) {
-		assert (employee.id == 0);
-		entityManager.persist(employee);
-	}
+	shared void persist(Employee employee)
+			=> entityManager.persist(employee);
 
-	shared default JList<Employee> allEmployees()
+	shared Employee? employeeForId(Integer id)
+			=> entityManager.find(`Employee`, id);
+
+	shared List<out Employee> employeesForName(String name)
 			=> entityManager
-				.createQuery("from Employee", javaClass<Employee>())
-				.resultList;
-	
+				.createTypedQuery("from Employee e where e.name = :name",
+							      `Employee`)
+				.setParameter("name", name)
+				.getResultList();
+
+	shared List<out Employee> allEmployees(Integer max)
+			=> entityManager
+				.createTypedQuery("from Employee", `Employee`)
+				.setMaxResults(max)
+				.getResultList();
+
 }

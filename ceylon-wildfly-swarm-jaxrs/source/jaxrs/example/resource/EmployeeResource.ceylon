@@ -1,10 +1,10 @@
 import java.util {
-	JList=List
+	List,
+	Arrays {
+		asList
+	}
 }
 
-import javax.enterprise.context {
-	applicationScoped
-}
 import javax.inject {
 	inject
 }
@@ -13,7 +13,8 @@ import javax.ws.rs {
 	produces,
 	get,
 	post,
-	consumes
+	consumes,
+	queryParam
 }
 
 import jaxrs.example.entity {
@@ -24,7 +25,6 @@ import jaxrs.example.service {
 }
 
 path("/employee")
-applicationScoped
 shared class EmployeeResource() {
 
 	//we can't use constructor injection
@@ -33,13 +33,20 @@ shared class EmployeeResource() {
 
 	get
 	produces(["application/json"])
-	shared default JList<Employee> get()
-			=> service.allEmployees();
+	shared List<out Employee> get(
+		queryParam("name") String? name,
+		queryParam("id") Integer? id,
+		queryParam("max") Integer? max)
+			=> if (exists id)
+			then asList(if (exists emp = service.employeeForId(id)) emp)
+			else if (exists name)
+			then service.employeesForName(name)
+			else service.allEmployees(max else 100);
 	
 	post
 	consumes(["application/json"])
 	produces(["application/json"])
-	shared default Employee persist(Employee employee) {
+	shared Employee persist(Employee employee) {
 		service.persist(employee);
 		return employee;
 	}

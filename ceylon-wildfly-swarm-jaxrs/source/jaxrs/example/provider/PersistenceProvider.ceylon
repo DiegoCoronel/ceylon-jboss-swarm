@@ -1,3 +1,7 @@
+import ceylon.interop.persistence {
+	EntityManager
+}
+
 import javax.enterprise.context {
 	requestScoped
 }
@@ -6,24 +10,16 @@ import javax.enterprise.inject {
 }
 import javax.persistence {
 	persistenceContext,
-	EntityManager
+	JEntityManager=EntityManager
 }
 
 requestScoped
 shared class PersistenceProvider() {
 
-	late EntityManager entityManager;
-
 	persistenceContext
-	shared void setPersistenceContext(EntityManager entityManager) {
-		this.entityManager = entityManager;
-	}
+	late JEntityManager jpaEntityManager;
 
-	produces
-	shared EntityManager getEntityManager()
-			=> entityManager;
+	produces shared EntityManager entityManager
+			=> EntityManager(jpaEntityManager);
+
 }
-
-
-//produces requestScoped persistenceContext
-//late EntityManager entityManager;

@@ -7,3 +7,5 @@ build/dependency-poms/
 build/maven-repository/
 build/module-descriptors/
 /classes/
+jaxrs.example-1.0.0*
+
