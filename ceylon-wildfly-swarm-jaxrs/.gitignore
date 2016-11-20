@@ -1,6 +1,7 @@
 /.exploded/
 .gradle/
 .idea/libraries/
+.idea/workspace.xml
 /modules/
 .settings/
 build/dependency-poms/

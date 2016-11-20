@@ -16,6 +16,3 @@ overrides=overrides.xml
 
 [formattool]
 profile=default
-
-[repositories]
-remote=aether:build/maven-settings.xml
