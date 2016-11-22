@@ -18,7 +18,7 @@ The project is based these [WildFly Swarm examples][].
 
 You'll need the following prerequisites to get started:
 
-- [Ceylon 1.3.0+](https://ceylon-lang.org/download)
+- [Ceylon 1.3.1](https://ceylon-lang.org/download)
 - [Ceylon Swarm plugin](https://github.com/ceylon/ceylon.swarm)
 
 Now, go to the directory `ceylon-wildfly-swarm-jaxrs`, which
