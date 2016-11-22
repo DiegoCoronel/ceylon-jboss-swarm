@@ -1,4 +1,4 @@
-# JBoss WildFly Swarm - Ceylon
+# WildFly Swarm and Ceylon
 
 An example [WildFly Swarm][] service written in [Ceylon][], 
 demonstrating the use of JPA, CDI, and JAX-RS. You can also
