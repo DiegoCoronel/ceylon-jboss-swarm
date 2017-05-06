@@ -41,7 +41,7 @@ shared class EmployeeService(EntityManager entityManager) {
 		return
 			let (e = crit.from(`Employee`))
 			crit.where(equal(e.get(`Employee.name`),
-					   crit.parameter(name)))
+					   		 crit.parameter(name)))
 				.select(e)
 				.getResultList();
 	}

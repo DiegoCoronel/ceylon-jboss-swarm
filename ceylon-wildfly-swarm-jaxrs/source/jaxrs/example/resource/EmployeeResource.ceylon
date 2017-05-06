@@ -38,9 +38,9 @@ shared class EmployeeResource() {
 		queryParam("id") Integer? id,
 		queryParam("max") Integer? max)
 			=> if (exists id)
-			then asList(if (exists emp = service.employeeForId(id)) emp)
+				then asList(if (exists emp = service.employeeForId(id)) emp)
 			else if (exists name)
-			then service.employeesForName(name)
+				then service.employeesForName(name)
 			else service.allEmployees(max else 100);
 	
 	post
