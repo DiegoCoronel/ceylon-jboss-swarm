@@ -32,7 +32,7 @@ shared class EmployeeResource() {
 	inject late EmployeeService service;
 
 	get
-	produces(["application/json"])
+	produces {"application/json"}
 	shared List<out Employee> get(
 		queryParam("name") String? name,
 		queryParam("id") Integer? id,
@@ -44,8 +44,8 @@ shared class EmployeeResource() {
 			else service.allEmployees(max else 100);
 	
 	post
-	consumes(["application/json"])
-	produces(["application/json"])
+	consumes {"application/json"}
+	produces {"application/json"}
 	shared Employee persist(Employee employee) {
 		service.persist(employee);
 		return employee;
