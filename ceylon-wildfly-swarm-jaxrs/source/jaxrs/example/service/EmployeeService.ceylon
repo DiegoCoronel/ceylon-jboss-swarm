@@ -1,24 +1,27 @@
 import ceylon.interop.persistence {
-	EntityManager
+    EntityManager
+}
+import ceylon.interop.persistence.criteria {
+    equal
 }
 
 import java.util {
-	List
+    List
 }
 
 import javax.ejb {
-	stateless,
-	localBean
+    stateless,
+    localBean
 }
 import javax.inject {
-	inject
+    inject
 }
 import javax.transaction {
-	transactional
+    transactional
 }
 
 import jaxrs.example.entity {
-	Employee
+    Employee
 }
 
 inject
@@ -33,17 +36,22 @@ shared class EmployeeService(EntityManager entityManager) {
 	shared Employee? employeeForId(Integer id)
 			=> entityManager.find(`Employee`, id);
 
-	shared List<out Employee> employeesForName(String name)
-			=> entityManager
-				.createTypedQuery("from Employee e where e.name = :name",
-							      `Employee`)
-				.setParameter("name", name)
+	shared List<out Employee> employeesForName(String name) {
+		value crit = entityManager.createCriteria();
+		return
+			let (e = crit.from(`Employee`))
+			crit.where(equal(e.get(`Employee.name`),
+					   crit.parameter(name)))
+				.select(e)
 				.getResultList();
+	}
 
-	shared List<out Employee> allEmployees(Integer max)
-			=> entityManager
-				.createTypedQuery("from Employee", `Employee`)
+	shared List<out Employee> allEmployees(Integer max){
+		value crit = entityManager.createCriteria();
+		return
+			crit.select(crit.from(`Employee`))
 				.setMaxResults(max)
 				.getResultList();
+	}
 
 }
