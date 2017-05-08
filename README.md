@@ -29,7 +29,7 @@ contains the example project.
 You can compile and run it using:
     
     ceylon plugin install ceylon.swarm
-    ceylon compile && ceylon swarm --provided-module javax.javaeeapi jaxrs.example && java -jar jaxrs.example-1.0.0-swarm.jar
+    ceylon compile && ceylon swarm --provided-module=javax.javaeeapi jaxrs.example && java -jar jaxrs.example-1.0.0-swarm.jar
 
 And hit: <http://localhost:8080/rest/employee>
 
