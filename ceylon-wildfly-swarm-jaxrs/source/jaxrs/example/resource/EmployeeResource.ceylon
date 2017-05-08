@@ -58,14 +58,14 @@ shared class EmployeeResource() {
 	produces {"application/json"}
 	transactional
 	shared Employee? manager(
-			queryParam("employee") Integer id)
+		queryParam("employee") Integer id)
 			=> service.employeeForId(id)?.manager;
 
 	path("employees") get
 	produces {"application/json"}
 	transactional
 	shared List<Employee>? employees(
-			queryParam("manager") Integer id)
+		queryParam("manager") Integer id)
 			=> if (exists manager = service.employeeForId(id))
 			then asList(*manager.employees)
 			else null;
