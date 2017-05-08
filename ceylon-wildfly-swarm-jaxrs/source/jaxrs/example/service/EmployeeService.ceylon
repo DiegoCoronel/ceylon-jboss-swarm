@@ -54,4 +54,18 @@ shared class EmployeeService(EntityManager entityManager) {
 				.getResultList();
 	}
 
+	transactional
+	shared Employee setManager(Integer employeeId,
+							   Integer? managerId) {
+		assert (exists employee
+				= entityManager.find(`Employee`,
+									 employeeId));
+		employee.manager
+				= if (exists managerId)
+				then entityManager.getReference(`Employee`,
+												managerId)
+				else null;
+		return employee;
+	}
+
 }

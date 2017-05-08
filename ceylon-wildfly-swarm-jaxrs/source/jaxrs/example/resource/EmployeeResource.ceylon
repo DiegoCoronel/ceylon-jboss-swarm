@@ -23,6 +23,9 @@ import jaxrs.example.entity {
 import jaxrs.example.service {
 	EmployeeService
 }
+import javax.transaction {
+	transactional
+}
 
 path("/employee")
 shared class EmployeeResource() {
@@ -51,4 +54,26 @@ shared class EmployeeResource() {
 		return employee;
 	}
 
+	path("manager") get
+	produces {"application/json"}
+	transactional
+	shared Employee? manager(
+			queryParam("employee") Integer id)
+			=> service.employeeForId(id)?.manager;
+
+	path("employees") get
+	produces {"application/json"}
+	transactional
+	shared List<Employee>? employees(
+			queryParam("manager") Integer id)
+			=> if (exists manager = service.employeeForId(id))
+			then asList(*manager.employees)
+			else null;
+
+	path("manager") post
+	produces {"application/json"}
+	shared Employee setManager(
+		queryParam("employee") Integer employeeId,
+		queryParam("manager") Integer? managerId)
+			=> service.setManager(employeeId, managerId);
 }
