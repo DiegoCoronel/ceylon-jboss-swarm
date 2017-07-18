@@ -18,7 +18,7 @@ The project is based these [WildFly Swarm examples][].
 
 You'll need the following prerequisites to get started:
 
-- [Ceylon 1.3.1](https://ceylon-lang.org/download)
+- [Ceylon 1.3.3](https://ceylon-lang.org/download)
 - [Ceylon Swarm plugin](https://github.com/ceylon/ceylon.swarm)
 
 Now, go to the directory `ceylon-wildfly-swarm-jaxrs`, which
@@ -106,7 +106,7 @@ To run the project in IntelliJ, open the file
 
 and click the green triangle in the gutter.
 
-Tp run the project in Eclipse, select the project or module in the
+To run the project in Eclipse, select the project or module in the
 Explorer, and select 
 'Run > Run As > Ceylon Java Application Packaged by WildFly Swarm'.
 
