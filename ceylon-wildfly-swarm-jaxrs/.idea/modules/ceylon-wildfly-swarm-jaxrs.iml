@@ -29,5 +29,6 @@
     <orderEntry type="library" scope="PROVIDED" name="Ceylon: javax.activation/1.1" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Ceylon: javax.javaeeapi/7.0" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Ceylon: javax.mail/1.5.0" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Ceylon: org.hibernate.javax.persistence:hibernate-jpa-2.1-api/1.0.0.Final" level="project" />
   </component>
 </module>
